@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Tarefa - Safe Task</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='imagens/tarefa.png') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_app_internal.css') }}">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container-header">
+            <div class="logo">
+                <a href="{{ url_for('home') }}"><h1>Safe Task</h1></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="{{ url_for('tarefas_page', usuario_id=usuario.id) }}" class="nav-link">Minhas Tarefas</a></li>
+                    <li><a href="{{ url_for('adicionar_tarefa', usuario_id=usuario.id) }}" class="nav-link active">Adicionar Tarefa</a></li>
+                    <li><a href="{{ url_for('deletar_usuario', user_id=usuario.id) }}" class="nav-link delete-account" onclick="return confirmarExclusaoConta();">Apagar Conta</a></li>
+                     <li><a href="{{ url_for('home') }}" class="nav-link logout">Sair</a></li> </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="form-card">
+            <h1 class="form-title">Adicionar Nova Tarefa</h1>
+            <form action="{{ url_for('adicionar_tarefa', usuario_id=usuario.id) }}" method="POST">
+                <div>
+                    <label for="titulo">Título:</label>
+                    <input type="text" name="titulo" id="titulo" required>
+                </div>
+                <div>
+                    <label for="data_inicio">Data Início:</label>
+                    <input type="date" name="data_inicio" id="data_inicio" required>
+                </div>
+                <div>
+                    <label for="data_fim">Data Fim:</label>
+                    <input type="date" name="data_fim" id="data_fim" required>
+                </div>
+                <div>
+                    <label for="descricao">Descrição:</label>
+                    <textarea name="descricao" id="descricao" required></textarea>
+                </div>
+                <div>
+                    <label for="status">Status:</label>
+                    <select name="status" id="status" required>
+                        <option value="pendente" selected>Pendente</option>
+                        <option value="em andamento">Em Andamento</option>
+                        <option value="concluída">Concluída</option>
+                    </select>
+                </div>
+                <!-- <div>
+                    <label for="userTarefa_id">Atribuir a:</label>
+                    <select name="userTarefa_id" id="userTarefa_id" required>
+                        {% for u in usuarios %}
+                        <option value="{{ u.id }}" {% if u.id == usuario.id %}selected{% endif %}>{{ u.nome }} (Eu)</option>
+                        {# Se quiser permitir atribuir a outros usuários, descomente e ajuste a lógica:
+                           (Precisa garantir que apenas usuários permitidos apareçam aqui)
+                        {% else %}
+                        <option value="{{ u.id }}">{{ u.nome }}</option>
+                        #}
+                        {% endfor %}
+                    </select>
+                </div> -->
+                <button type="submit">Adicionar Tarefa</button>
+            </form>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy;  Safe Task. Todos os direitos reservados.</p>
+    </footer>
+    <script>
+        
+        function confirmarExclusaoConta() {
+            return confirm('Você tem certeza de que deseja EXCLUIR SUA CONTA? Esta ação é PERMANENTE e todas as suas tarefas serão perdidas.');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    display: flex; 
+    flex-direction: column; 
+}
+
+body {
+    line-height: 1.6;
+    color: #37474F; 
+    background-color: #F8F9FA; 
+    flex-grow: 1; 
+}
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+    flex-grow: 1;
+    padding-top: 20px; 
+    padding-bottom: 40px; 
+}
+
+/* --- Cabeçalho do Site  --- */
+.site-header {
+    background-color: #283593; /* Azul Índigo */
+    color: #FFFFFF;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    
+}
+
+.site-header .container-header { 
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 600;
+    color: #FFFFFF; 
+}
+
+.logo a, .logo a:hover, .logo a:visited {
+    text-decoration: none; 
+    color: inherit; 
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.main-nav li {
+    margin-left: 25px;
+}
+
+.main-nav .nav-link {
+    color: #E8EAF6;
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-weight: 500;
+}
+
+.main-nav .nav-link:hover,
+.main-nav .nav-link.active {
+    background-color: #C5CAE9;
+    color: #283593;
+}
+
+
+.form-container {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 30px 40px; 
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+    border: 1px solid #E0E0E0;
+}
+
+.form-container h1, .form-container h2 {
+    text-align: center;
+    color: #283593; 
+    margin-bottom: 10px; 
+    font-weight: 600;
+}
+.form-container h1 { font-size: 28px; }
+.form-container h2 { font-size: 26px; }
+
+
+.form-container p {
+    text-align: center;
+    color: #4E5D6C;
+    margin-bottom: 25px; 
+    font-size: 16px;
+}
+
+.form-container form input[type="text"],
+.form-container form input[type="email"],
+.form-container form input[type="password"],
+.form-container form input[type="tel"] {
+    width: 100%;
+    padding: 12px 15px;
+    margin-bottom: 18px; 
+    border: 1px solid #CFD8DC;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #37474F;
+}
+
+.form-container form input[type="text"]:focus,
+.form-container form input[type="email"]:focus,
+.form-container form input[type="password"]:focus,
+.form-container form input[type="tel"]:focus {
+    border-color: #283593; 
+    box-shadow: 0 0 0 2px rgba(40, 53, 147, 0.2);
+    outline: none;
+}
+
+.form-container form input[type="submit"],
+.form-container form button[type="reset"],
+.form-container form button { 
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 10px; 
+}
+
+.form-container form input[type="submit"] {
+    background-color: #283593; 
+    color: #FFFFFF;
+}
+
+.form-container form input[type="submit"]:hover {
+    background-color: #1A237E;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.form-container form button[type="reset"] {
+    background-color: #78909C; 
+    color: #FFFFFF;
+}
+
+.form-container form button[type="reset"]:hover {
+    background-color: #546E7A; 
+}
+
+.form-error-message {
+    color: #D32F2F; 
+    background-color: #FFEBEE; 
+    border: 1px solid #D32F2F;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 15px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.form-switch-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 15px;
+}
+
+.form-switch-link a {
+    color: #283593;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-switch-link a:hover {
+    text-decoration: underline;
+}
+
+
+/* --- Rodapé --- */
+.site-footer {
+    background-color: #37474F;
+    color: #CFD8DC;
+    text-align: center;
+    padding: 20px 0; 
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 14px;
+}

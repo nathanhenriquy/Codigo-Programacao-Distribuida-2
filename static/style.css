@@ -1,0 +1,229 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    overflow-x: hidden;
+    scroll-behavior: smooth; 
+}
+
+body {
+    line-height: 1.6;
+    color: #37474F; 
+    background-color: #F8F9FA;
+}
+
+* { 
+    box-sizing: border-box;
+}
+
+.container {
+    width: 90%; 
+    max-width: 1100px; 
+    margin: 0 auto; 
+    padding: 0 15px;
+}
+
+/* --- Cabeçalho e Navegação --- */
+.site-header {
+    background-color: #283593; 
+    color: #FFFFFF;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    top: 0;
+    z-index: 1000; 
+}
+
+.site-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 26px; 
+    font-weight: 600; 
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.main-nav li {
+    margin-left: 25px; 
+}
+
+.main-nav .nav-link {
+    color: #E8EAF6; 
+    text-decoration: none;
+    font-size: 16px;
+    padding: 8px 15px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-weight: 500;
+}
+
+.main-nav .nav-link:hover,
+.main-nav .nav-link.active {
+    background-color: #C5CAE9; 
+    color: #283593; 
+}
+
+.main-nav .btn-login {
+    background-color: #FFFFFF;
+    color: #283593; 
+    font-weight: 600;
+    border: 1px solid transparent;
+}
+.main-nav .btn-login:hover {
+    background-color: #F1F3F5; 
+    color: #1A237E; 
+}
+
+/* --- Seção Hero --- */
+.hero {
+    background-color: #D1C4E9; 
+    color: #283593; 
+    text-align: center;
+    padding: 80px 20px 90px 20px; 
+}
+
+.hero h2 {
+    font-size: 40px; 
+    margin-bottom: 20px;
+    font-weight: 700; 
+    letter-spacing: -0.5px; 
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 35px;
+    max-width: 750px; 
+    margin-left: auto;
+    margin-right: auto;
+    color: #37474F; 
+}
+
+.hero-buttons .btn {
+    padding: 14px 30px; 
+    font-size: 17px;
+    text-decoration: none;
+    border-radius: 8px;
+    margin: 5px 10px;
+    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    display: inline-block;
+    font-weight: 500;
+    border: 2px solid transparent;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.hero-buttons .btn-primary {
+    background-color: #283593; 
+    color: #FFFFFF;
+    border-color: #283593;
+}
+
+.hero-buttons .btn-primary:hover {
+    background-color: #1A237E; 
+    border-color: #1A237E;
+    transform: translateY(-3px); 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.hero-buttons .btn-secondary {
+    background-color: transparent;
+    color: #283593;
+    border-color: #283593;
+}
+
+.hero-buttons .btn-secondary:hover {
+    background-color: #283593;
+    color: #FFFFFF;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* --- Seção Sobre (Features) --- */
+.about-section {
+    padding: 70px 20px;
+    background-color: #FFFFFF;
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 32px;
+    color: #283593; 
+    margin-bottom: 50px; 
+    font-weight: 600;
+}
+
+.features {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.feature {
+    background-color: #F8F9FA; 
+    padding: 30px 25px; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
+    width: calc(33.333% - 30px); 
+    min-width: 290px;
+    box-sizing: border-box;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.feature-icon {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 20px;
+    opacity: 0.8; 
+}
+
+.feature h3 {
+    font-size: 20px;
+    color: #283593;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.feature p {
+    font-size: 15px;
+    color: #4E5D6C; 
+    line-height: 1.7;
+}
+
+/* --- Rodapé --- */
+.site-footer {
+    background-color: #37474F; 
+    color: #CFD8DC;
+    text-align: center;
+    padding: 25px 0;        
+    margin-top: 50px;
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.site-footer a {
+    color: #E0E0E0;
+    text-decoration: none;
+}
+
+.site-footer a:hover {
+    color: #FFFFFF;
+}

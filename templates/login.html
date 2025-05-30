@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Safe Task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_forms.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='imagens/tarefa.png') }}"> 
+
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container-header">
+            <div class="logo">
+                <a href="{{ url_for('home') }}"><h1>Safe Task</h1></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="{{ url_for('home') }}" class="nav-link">Início</a></li>
+                    <li><a href="{{ url_for('registrar') }}" class="nav-link">Cadastre-se</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <h1>Login</h1>
+            <p>Já possui conta? Entre agora:</p>
+
+            <form action="{{ url_for('login') }}" method="post">
+                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                <input type="password" id="senha" name="senha" placeholder="Digite sua senha" required>
+                
+                <input type='submit' value='Entrar'>
+                <button type="reset">Limpar</button>
+
+                {% if erro %}
+                    <p class="form-error-message">{{ erro }}</p>
+                {% endif %}
+            </form>
+            <div class="form-switch-link">
+                <p>Não tem uma conta? <a href="{{ url_for('registrar') }}">Crie uma aqui</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy;  Safe Task. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

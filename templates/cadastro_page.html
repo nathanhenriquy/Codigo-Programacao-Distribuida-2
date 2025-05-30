@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Safe Task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_forms.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='imagens/tarefa.png') }}"> 
+
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container-header">
+            <div class="logo">
+                <a href="{{ url_for('home') }}"><h1>Safe Task</h1></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="{{ url_for('home') }}" class="nav-link">Início</a></li>
+                    <li><a href="{{ url_for('login') }}" class="nav-link">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <h2>Cadastre-se</h2>
+            <p>É novo? Crie sua conta em instantes.</p>
+
+            <form action="{{ url_for('registrar') }}" method="post">
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+                <input type="tel" id="telefone" name="telefone" placeholder="Digite seu telefone (ex: 41999998888)" required> <input type="password" id="senha" name="senha" placeholder="Crie uma senha" required>
+                <input type="password" id="senha2" name="senha2" placeholder="Confirme sua senha" required>
+                
+                <input type="submit" id="registrar" value="Registrar">
+                <button type="reset">Limpar</button>
+
+                {% if erro %}
+                    <p class="form-error-message">{{ erro }}</p>
+                {% endif %}
+            </form>
+            <div class="form-switch-link">
+                <p>Já possui uma conta? <a href="{{ url_for('login') }}">Faça login aqui</a></p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>&copy; Safe Task. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

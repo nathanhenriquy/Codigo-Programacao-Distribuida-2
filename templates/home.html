@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Safe Task - Gerenciador de Tarefas</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='imagens/tarefa.png') }}"> 
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>  
+    <header class="site-header">
+        <div class="container">
+            <div class="logo">
+                <h1>Safe Task</h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="{{ url_for('home') }}" class="nav-link active">Início</a></li>
+                    <li><a href="#sobre" class="nav-link">Sobre</a></li>
+                    <li><a href="{{ url_for('registrar') }}" class="nav-link">Cadastro</a></li>
+                    <li><a href="{{ url_for('login') }}" class="nav-link btn-login">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Organize suas tarefas com segurança e eficiência.</h2>
+                <p>Com Safe Task, você gerencia seus projetos, define prazos e colabora com sua equipe (ou gerencia suas
+                    tarefas pessoais) de forma intuitiva.</p>
+                <div class="hero-buttons">
+                    <a href="{{ url_for('registrar') }}" class="btn btn-primary">Comece Agora - É Grátis!</a>
+                    <a href="{{ url_for('login') }}" class="btn btn-secondary">Já tenho uma conta</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="about-section">
+            <div class="container">
+                <h2>Por que escolher o Safe Task?</h2>
+                <div class="features">
+                    <div class="feature">
+                        <img src="{{ url_for('static', filename='imagens/icons8-senha-48.png') }}" alt="Ícone de Segurança"
+                            class="feature-icon">
+                        <h3>Segurança em Primeiro Lugar</h3>
+                        <p>Suas informações e senhas são protegidas com as melhores práticas de segurança.</p>
+                    </div>
+                    <div class="feature">
+                        <img src="{{ url_for('static', filename='imagens/icons8-à-fazer-50.png') }}"
+                            alt="Ícone de Eficiência" class="feature-icon">
+                        <h3>Eficiência e Produtividade</h3>
+                        <p>Interface simples e ferramentas poderosas para você focar no que realmente importa.</p>
+                    </div>
+                    <div class="feature">
+                        <img src="{{ url_for('static', filename='imagens/icons8-vários-dispositivos-50.png') }}" alt="Ícone de Acesso"
+                            class="feature-icon">
+                        <h3>Acesse de Qualquer Lugar</h3>
+                        <p>Disponível em qualquer dispositivo com acesso à internet (futuramente!).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; Safe Task. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

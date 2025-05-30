@@ -1,0 +1,324 @@
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    line-height: 1.6;
+    color: #37474F;
+    background-color: #F8F9FA;
+    flex-grow: 1;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+main {
+    flex-grow: 1;
+    padding-top: 20px;
+    padding-bottom: 40px;
+    width: 90%;
+    max-width: 1000px; /* Um pouco mais largo para conteúdo de app */
+    margin: 0 auto; /* Centraliza o conteúdo principal */
+}
+
+/* --- Cabeçalho do Site (Consistente) --- */
+.site-header {
+    background-color: #283593; /* Azul Índigo */
+    color: #FFFFFF;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+.site-header .container-header {
+    width: 90%;
+    max-width: 1100px; /* Mantém consistência com outros headers */
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo h1 {
+    margin: 0;
+    font-size: 26px;
+    font-weight: 600;
+}
+.logo a, .logo a:hover, .logo a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espaçamento entre itens da navegação */
+}
+
+.main-nav .nav-link {
+    color: #E8EAF6;
+    text-decoration: none;
+    font-size: 15px; /* Ligeiramente menor para mais itens */
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    font-weight: 500;
+}
+
+.main-nav .nav-link:hover,
+.main-nav .nav-link.active {
+    background-color: #C5CAE9;
+    color: #283593;
+}
+
+.nav-link.logout, .nav-link.delete-account {
+    background-color: #C62828; /* Vermelho para ações destrutivas/saída */
+    color: #FFFFFF;
+}
+.nav-link.logout:hover, .nav-link.delete-account:hover {
+    background-color: #B71C1C; /* Vermelho mais escuro */
+    color: #FFFFFF;
+}
+
+
+/* --- Títulos de Página e Seção --- */
+.page-title {
+    color: #283593;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 600;
+}
+
+/* --- Estilos para a Página de Lista de Tarefas (tarefas_page.html) --- */
+.task-filters {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.task-filters .filter-link {
+    text-decoration: none;
+    color: #283593;
+    padding: 8px 15px;
+    margin: 0 5px;
+    border-radius: 20px; /* Pílulas */
+    border: 1px solid transparent; /* Para manter o tamanho ao adicionar borda no hover/active */
+    font-weight: 500;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.task-filters .filter-link:hover {
+    background-color: #E8EAF6; /* Lavanda bem clara */
+    color: #1A237E; /* Índigo escuro */
+}
+
+.task-filters .filter-link.active { /* Você precisará adicionar a classe 'active' via JS ou no template */
+    background-color: #283593;
+    color: #FFFFFF;
+    border-color: #283593;
+}
+
+.task-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.task-item {
+    background-color: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    border-left: 5px solid #283593; /* Destaque de cor primária */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.07);
+}
+/* Cores de borda por status (Opcional - requer lógica no template para adicionar a classe) */
+.task-item.status-pendente { border-left-color: #FFB300; /* Âmbar */ }
+.task-item.status-em-andamento { border-left-color: #1E88E5; /* Azul */ }
+.task-item.status-concluida { border-left-color: #43A047; /* Verde */ }
+
+
+.task-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #283593;
+    font-size: 20px;
+}
+
+.task-item p {
+    margin-bottom: 8px;
+    color: #4E5D6C;
+    font-size: 15px;
+}
+.task-item p strong {
+    color: #37474F;
+    min-width: 80px; /* Alinha um pouco os textos */
+    display: inline-block;
+}
+
+.task-actions {
+    margin-top: 15px;
+    display: flex;
+    gap: 10px; /* Espaço entre botões de ação */
+}
+
+.task-actions .btn { /* Estilo base para botões/links de ação */
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #FFFFFF;
+    transition: background-color 0.2s ease;
+    border: none; /* Remove borda se for <button> */
+    cursor: pointer; /* Garante cursor de ponteiro */
+    display: inline-block; /* Para padding funcionar corretamente em <a> */
+}
+
+.task-actions .btn-edit {
+    background-color: #546E7A; /* Cinza Azulado */
+}
+.task-actions .btn-edit:hover {
+    background-color: #455A64;
+}
+
+.task-actions .btn-delete {
+    background-color: #D32F2F; /* Vermelho para excluir */
+}
+.task-actions .btn-delete:hover {
+    background-color: #C62828;
+}
+
+.no-tasks-message {
+    text-align: center;
+    font-size: 16px;
+    color: #546E7A;
+    padding: 20px;
+    background-color: #ECEFF1;
+    border-radius: 8px;
+}
+
+.add-task-button-container { /* Para centralizar o botão de adicionar nova tarefa */
+    text-align: center;
+    margin-top: 30px;
+}
+
+.btn-primary-action { /* Botão principal (Adicionar Tarefa) */
+    background-color: #283593;
+    color: #FFFFFF;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+}
+.btn-primary-action:hover {
+    background-color: #1A237E;
+}
+
+
+/* --- Estilos para Formulários de Adicionar/Editar Tarefa --- */
+.form-card { /* Container para os formulários */
+    max-width: 700px; /* Um pouco mais largo para formulários de tarefa */
+    margin: 20px auto;
+    padding: 30px 40px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+    border: 1px solid #E0E0E0;
+}
+
+.form-card .form-title {
+    text-align: center;
+    color: #283593;
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.form-card form label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #37474F;
+    font-size: 15px;
+}
+
+.form-card form input[type="text"],
+.form-card form input[type="date"],
+.form-card form textarea,
+.form-card form select {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 18px;
+    border: 1px solid #CFD8DC;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #37474F;
+    background-color: #FFFFFF; /* Garante fundo branco */
+}
+
+.form-card form input[type="text"]:focus,
+.form-card form input[type="date"]:focus,
+.form-card form textarea:focus,
+.form-card form select:focus {
+    border-color: #283593;
+    box-shadow: 0 0 0 2px rgba(40, 53, 147, 0.2);
+    outline: none;
+}
+
+.form-card form textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.form-card form button[type="submit"] {
+    width: auto; /* Botão não ocupa largura total por padrão */
+    min-width: 180px; /* Largura mínima */
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    background-color: #283593;
+    color: #FFFFFF;
+    display: block; /* Para centralizar com margin auto */
+    margin: 20px auto 0 auto; /* Espaço acima, centraliza */
+}
+
+.form-card form button[type="submit"]:hover {
+    background-color: #1A237E;
+}
+
+/* --- Rodapé (Consistente) --- */
+.site-footer {
+    background-color: #37474F;
+    color: #CFD8DC;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.site-footer p {
+    margin: 0;
+    font-size: 14px;
+}

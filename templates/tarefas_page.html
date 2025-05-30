@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minhas Tarefas - Safe Task</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_app_internal.css') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='imagens/tarefa.png') }}"> 
+
+    <script>
+        function confirmarExclusaoConta() {
+            return confirm('Você tem certeza de que deseja EXCLUIR SUA CONTA? Esta ação é PERMANENTE e todas as suas tarefas serão perdidas.');
+        }
+        function confirmarExclusaoTarefa() {
+            return confirm('Você tem certeza de que deseja excluir esta tarefa?');
+        }
+    </script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container-header">
+            <div class="logo">
+                <a href="{{ url_for('home') }}"><h1>Safe Task</h1></a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="{{ url_for('tarefas_page', usuario_id=usuario.id) }}" class="nav-link active">Minhas Tarefas</a></li>
+                    <li><a href="{{ url_for('adicionar_tarefa', usuario_id=usuario.id) }}" class="nav-link">Adicionar Tarefa</a></li>
+                    <li><a href="{{ url_for('deletar_usuario', user_id=usuario.id) }}" class="nav-link delete-account" onclick="return confirmarExclusaoConta();">Apagar Conta</a></li>
+                    <li><a href="{{ url_for('home') }}" class="nav-link logout">Sair</a></li> </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <h1 class="page-title">Tarefas de {{ usuario.nome }}</h1>
+
+        <div class="task-filters">
+            <a href="{{ url_for('tarefas_page', usuario_id=usuario.id, status='pendente') }}" class="filter-link {% if request.args.get('status') == 'pendente' %}active{% endif %}">Pendentes</a>
+            <a href="{{ url_for('tarefas_page', usuario_id=usuario.id, status='em andamento') }}" class="filter-link {% if request.args.get('status') == 'em andamento' %}active{% endif %}">Em Andamento</a>
+            <a href="{{ url_for('tarefas_page', usuario_id=usuario.id, status='concluída') }}" class="filter-link {% if request.args.get('status') == 'concluída' %}active{% endif %}">Concluídas</a>
+            <a href="{{ url_for('tarefas_page', usuario_id=usuario.id) }}" class="filter-link {% if not request.args.get('status') %}active{% endif %}">Todas</a>
+        </div>
+
+        {% if tarefas %}
+            <ul class="task-list">
+                {% for tarefa in tarefas %}
+                    <li class="task-item status-{{ tarefa.status.lower().replace(' ', '-') }}"> <h3>{{ tarefa.titulo }}</h3>
+                        <p><strong>Status:</strong> {{ tarefa.status }}</p>
+                        <p><strong>Início:</strong> {{ tarefa.data_inicio.strftime('%d/%m/%Y') if tarefa.data_inicio else 'N/A' }}</p>
+                        <p><strong>Fim:</strong> {{ tarefa.data_fim.strftime('%d/%m/%Y') if tarefa.data_fim else 'N/A' }}</p>
+                        <p><strong>Descrição:</strong> {{ tarefa.descricao }}</p>
+                        <div class="task-actions">
+                            <a href="{{ url_for('editar_tarefa', tarefa_id=tarefa.id) }}" class="btn btn-edit">Editar</a>
+                            <a href="{{ url_for('deletar_tarefa', tarefa_id=tarefa.id) }}" class="btn btn-delete" onclick="return confirmarExclusaoTarefa();">Excluir</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-tasks-message">Não há tarefas para exibir com o filtro selecionado.</p>
+        {% endif %}
+
+        <div class="add-task-button-container">
+            <a href="{{ url_for('adicionar_tarefa', usuario_id=usuario.id) }}" class="btn-primary-action">Adicionar Nova Tarefa</a>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy;Safe Task. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
