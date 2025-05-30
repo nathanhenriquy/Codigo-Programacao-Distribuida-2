@@ -1,17 +1,23 @@
-# Usa imagem oficial do Python
-FROM python:3.11
+# Use uma imagem oficial do Python como imagem base
+FROM python:3.9-slim
 
-# Define diretório de trabalho
+# Defina o diretório de trabalho no contêiner
 WORKDIR /app
 
-# Copia arquivos para o container
-COPY . /app
+# Copie o arquivo de requisitos limpo para o contêiner em /app
+COPY requirements.txt .
 
-# Instala dependências
+# Instale quaisquer pacotes necessários especificados em requirements.txt
+# --no-cache-dir reduz o tamanho da imagem
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Expõe a porta 5000 (Flask)
+# Copie o restante do código da aplicação (app.py, models.py, db.py, templates/, static/)
+# para o contêiner em /app
+COPY . .
+
+# Torne a porta 5000 disponível para o mundo fora deste contêiner (conforme usado em app.py)
 EXPOSE 5000
 
-# Executa o app
+# Comando para executar a aplicação quando o contêiner for iniciado
+# Isso usa o bloco if __name__ == "__main__": no seu app.py
 CMD ["python", "app.py"]

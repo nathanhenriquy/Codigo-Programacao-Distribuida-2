@@ -1,12 +1,13 @@
 version: '3.8'
 
 services:
-  flask-app:
-    build: .
+  web:
+    build: . # Constrói a imagem a partir do Dockerfile no diretório atual
     ports:
-      - "80:5000"
-    volumes:
-      - .:/app
+      - "80:5000" # Mapeia a porta 5000 do host para a porta 5000 do contêiner
+                  #  usar "80:5000" garante que o grupo de segurança da EC2 permita a porta 80.
+    volumes:     
+      - ./dados.db:/app/dados.db # Garante que dados.db no diretório do seu projeto seja usado/criado
     environment:
-      - FLASK_ENV=development
-    restart: unless-stopped
+      - FLASK_ENV=development # Seu app.py roda com debug=True, então development é apropriado.
+                              # Para produção, defina como 'production' e debug=False em app.py
